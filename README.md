@@ -18,4 +18,8 @@ ng serve -o
 ```
 
 ## An Admin account you can test in the project:
+```
+email:admin@admin.com
+password:123456789
+```
 > All data is stored in mongoDB Atlas database ❤
