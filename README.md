@@ -1,7 +1,5 @@
 # Veseeta Proejct ITI Ismailia MEA/RN Track
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.3.
-
 ## First clone the Backend Server:
 
 ```
