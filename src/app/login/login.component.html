@@ -1,0 +1,45 @@
+<div class="text-center">
+  <div>
+    <main class="form-signin">
+      <form #usersForm="ngForm" (ngSubmit)="userLogin(usersForm.value)">
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+        <div class="form-floating">
+          <input
+            ngModel
+            type="email"
+            name="email"
+            class="form-control"
+            id="floatingInput"
+            placeholder="name@example.com"
+          />
+          <label for="floatingInput">Email address</label>
+        </div>
+        <div class="form-floating">
+          <input
+            ngModel
+            type="password"
+            name="password"
+            class="form-control"
+            id="floatingPassword"
+            placeholder="Password"
+          />
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">
+          Sign in
+        </button>
+        <div style="margin-top: 1rem">
+          Don't have an accout? <span class="s" (click)="route()">Sign-Up</span>
+        </div>
+        <p class="mt-5 mb-3 text-muted">&copy; 2022</p>
+      </form>
+    </main>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div>
+      <ngb-alert *ngIf="invalidLogin" type="custom" [dismissible]="false"
+        ><strong>Alert!</strong> Incorrect Password or Email.</ngb-alert
+      >
+    </div>
+  </div>
+</div>

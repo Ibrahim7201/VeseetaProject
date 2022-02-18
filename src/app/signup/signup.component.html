@@ -1,0 +1,165 @@
+<div class="container-fluid d-flex justify-content-center mt-3">
+  <form
+    #usersForm="ngForm"
+    (ngSubmit)="userSignUp(usersForm.value)"
+    [formGroup]="myForm"
+    class="needs-validation d-grid gap-2 border-dark rounded-3 w-25"
+  >
+    <div class="text-center" *ngIf="Loading">
+      <div style="transform: scale(1.5)">
+        <fa-icon class="ms-3" [icon]="['fas', 'sync']" [spin]="true"></fa-icon>
+        Loading ...
+      </div>
+    </div>
+    <label style="font-weight: bold; font-size: 1.2rem"
+      ><span style="color: red">* </span>Name:</label
+    >
+    <input
+      type="text"
+      name="name"
+      ngModel
+      class="form-control {{
+        name?.touched ? (name?.invalid ? 'is-invalid' : 'is-valid') : ''
+      }}"
+      formControlName="name"
+      aria-describedby="nameHelp"
+    />
+    <div class="text-danger" *ngIf="name?.invalid && name?.touched">
+      Your name doesn't look right
+    </div>
+    <label style="font-weight: bold; font-size: 1.2rem"
+      ><span style="color: red">* </span>Email:</label
+    >
+    <input
+      type="email"
+      name="email"
+      ngModel
+      class="form-control {{
+        email?.touched ? (email?.invalid ? 'is-invalid' : 'is-valid') : ''
+      }}"
+      formControlName="email"
+      aria-describedby="emailHelp"
+    />
+    <div class="text-danger" *ngIf="email?.invalid && email?.touched">
+      Your email doesn't look right
+    </div>
+    <label style="font-weight: bold; font-size: 1.2rem"
+      ><span style="color: red">* </span>Password:</label
+    >
+    <input
+      type="password"
+      name="password"
+      ngModel
+      class="form-control {{
+        password?.touched ? (password?.invalid ? 'is-invalid' : 'is-valid') : ''
+      }}"
+      formControlName="password"
+      aria-describedby="passwordHelp"
+    />
+    <div class="text-danger" *ngIf="password?.invalid && password?.touched">
+      Your password should be between 8 and 15 characters!
+    </div>
+    <label style="font-weight: bold; font-size: 1.2rem"
+      ><span style="color: red">* </span>Password confirmation:</label
+    >
+    <input
+      type="password"
+      name="passwordConfirmation"
+      ngModel
+      class="form-control {{
+        passwordConfirmation?.touched
+          ? passwordConfirmation?.invalid
+            ? 'is-invalid'
+            : 'is-valid'
+          : ''
+      }}"
+      formControlName="passwordConfirmation"
+      aria-describedby="passwordHelp"
+    />
+    <div
+      class="text-danger"
+      *ngIf="passwordConfirmation?.invalid && passwordConfirmation?.touched"
+    >
+      Your password should be between 8 and 15 characters!
+    </div>
+    <label style="font-weight: bold; font-size: 1.2rem"
+      ><span style="color: red">* </span>Personal Picture:</label
+    >
+    <form>
+      <input class="form-control" type="file" #fileInput name="photo" />
+    </form>
+    <label style="font-weight: bold; font-size: 1.2rem">Cell Phone:</label>
+    <button type="button" class="btn btn-primary mb-3" (click)="addPhone()">
+      Add phone number
+    </button>
+    <div formArrayName="phones">
+      <div
+        *ngFor="let phone of phoneForms.controls; let i = index"
+        [formGroupName]="i"
+      >
+        <div class="d-flex gap-3 mb-3">
+          <input
+            class="border form-control"
+            placeholder="Area"
+            formControlName="area"
+          />
+          <input
+            class="border form-control"
+            placeholder="Prefix"
+            formControlName="prefix"
+          />
+          <input
+            class="border form-control"
+            placeholder="Line"
+            formControlName="line"
+          />
+
+          <button type="button" class="btn btn-danger" (click)="deletePhone(i)">
+            Delete
+          </button>
+        </div>
+      </div>
+    </div>
+    <label
+      >Already Have an Account?
+      <span class="s" (click)="route()">Login Here</span>
+    </label>
+    <div class="d-flex justify-content-center">
+      <input
+        *ngIf="
+          !name?.invalid &&
+          !email?.invalid &&
+          !password?.invalid &&
+          !passwordConfirmation?.invalid
+        "
+        type="submit"
+        class="btn btn-primary mt-5 fw-bold fs-3 w-50"
+        value="Register"
+      /><button
+        *ngIf="
+          name?.invalid ||
+          email?.invalid ||
+          password?.invalid ||
+          passwordConfirmation?.invalid
+        "
+        class="btn btn-danger disabled btn mt-5 fw-bold fs-3 w-50"
+      >
+        Fill all data
+      </button>
+    </div>
+    <div class="d-flex justify-content-center">
+      <div>
+        <ngb-alert
+          *ngIf="invalidPasswordConfirmation"
+          type="custom"
+          [dismissible]="false"
+          ><strong>Alert!</strong>Please re-enter the same password</ngb-alert
+        ><ngb-alert *ngIf="invalidMail" type="custom" [dismissible]="false"
+          ><strong>Alert!</strong>Please Enter a valid email</ngb-alert
+        ><ngb-alert *ngIf="invalidImage" type="custom" [dismissible]="false"
+          ><strong>Alert!</strong>Please Enter Your Image</ngb-alert
+        >
+      </div>
+    </div>
+  </form>
+</div>

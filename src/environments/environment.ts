@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  base_url: 'http://localhost:3000/',
+  login: 'veseeta/login',
+  logout: 'veseeta/logout',
+  signup: 'veseeta/signup',
+  doctors: 'veseeta/doctors',
+  users: 'veseeta/users',
+  url: 'https://jsonplaceholder.typicode.com/todos/1',
 };
 
 /*

@@ -1,0 +1,14 @@
+.l {
+  cursor: pointer;
+  color: blue;
+}
+.l:hover {
+  text-decoration: underline;
+}
+.s {
+  cursor: pointer;
+  color: blue;
+}
+.s:hover {
+  text-decoration: underline;
+}

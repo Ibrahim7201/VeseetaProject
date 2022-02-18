@@ -1,0 +1,60 @@
+<div class="d-flex flex-column align-items-center container">
+  <div
+    class="d-flex justify-content-evenly align-items-center mt-3 mb-4"
+    style="
+      border-left: 5px solid blue;
+      width: 30rem;
+      height: 10rem;
+      background-color: white;
+    "
+  >
+    <div class="image-cropper">
+      <img
+        src="{{ user.image }}"
+        title="User: {{ user.name }}"
+        class="rounded"
+      />
+    </div>
+    <div>
+      <span style="font-weight: bold">Name:</span> {{ user.name }} <br /><br />
+      <span style="font-weight: bold">Email:</span> {{ user.email }}
+      <br /><br />
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Doctor</th>
+        <th scope="col">Specialization</th>
+        <th scope="col">Time</th>
+        <th class="text-center" scope="col" style="width: 250px">Actions</th>
+      </tr>
+    </thead>
+    <tbody style="font-weight: bold">
+      <tr *ngFor="let reservation of reservationsArr; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ reservation.doctor }}</td>
+        <td>{{ reservation.specialization }}</td>
+        <td style="color: green">
+          {{ reservation.hours + " : " + reservation.minutes }}
+        </td>
+        <td class="text-center">
+          <button
+            (click)="
+              cancelReservation(
+                reservation.hours,
+                reservation.minutes,
+                reservation.doctor_id
+              )
+            "
+            class="btn btn-danger"
+          >
+            Cancel Reservation
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

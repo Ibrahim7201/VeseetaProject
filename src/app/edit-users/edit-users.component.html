@@ -1,0 +1,72 @@
+<div class="container">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Email</th>
+        <th scope="col">Reservations</th>
+        <th scope="col">Role</th>
+        <th scope="col" style="width: 250px">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of usersArr; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{ user.name }}</td>
+        <td>{{ user.email }}</td>
+        <td>
+          <span
+            style="
+              color: red;
+              background-color: white;
+              padding: 2px 1px 2px 1px;
+              font-weight: bold;
+              border-left: 2px solid black;
+              margin-left: 3px;
+            "
+            *ngFor="let reservation of user.reservations"
+          >
+            {{ reservation.hours }} : {{ reservation.minutes }}
+          </span>
+        </td>
+        <td
+          style="
+            color: white;
+            text-align: center;
+            text-transform: capitalize;
+            font-weight: bold;
+            width: 150px;
+            vertical-align: middle;
+          "
+          [ngStyle]="{
+            'background-color': user.role == 'admin' ? 'red' : 'green'
+          }"
+        >
+          {{ user.role }}
+        </td>
+        <td>
+          <div
+            class="d-flex justify-content-center"
+            *ngIf="user.role == 'user'; else adminTemplate"
+          >
+            <button
+              class="btn btn-danger"
+              type="button"
+              (click)="deleteUser(user._id)"
+            >
+              Remove
+            </button>
+          </div>
+          <ng-template #adminTemplate class="d-flex">
+            <div class="d-flex justify-content-center">
+              <button class="btn btn-secondary disabled" type="button">
+                Admin is protected
+              </button>
+            </div>
+          </ng-template>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

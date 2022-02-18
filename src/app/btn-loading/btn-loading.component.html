@@ -1,0 +1,62 @@
+<button
+  class="btn btn-primary d-flex justify-content-between {{
+    isLoading ? 'disabled' : ''
+  }}"
+  (click)="getLoadingTitle(content)"
+>
+  {{ btnTitle }}
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 style="font-weight: bold" class="modal-title" id="modal-basic-title">
+        Welcome <span style="color: red">{{ getCookie("name") }}</span> !
+      </h4>
+      <button class="btn btn-outline-dark" (click)="close('Cross click')">
+        <span>X</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <h4>
+        Here are
+        <span style="color: green; font-weight: bold">{{ item.name }}'s</span>
+        available hours:
+      </h4>
+      <div
+        class="d-flex mb-3 justify-content-between"
+        *ngFor="let time of item.availableHours"
+      >
+        <div style="font-weight: bold">
+          {{ time.hours }} : {{ time.minutes }}
+          <span style="font-size: 0.6rem">(24hr format)</span>
+        </div>
+        <div>
+          <button
+            *ngIf="checkTime(time.hours, time.minutes)"
+            (click)="reserveUser(item, time)"
+            class="btn btn-outline-success btn-sm"
+          >
+            Reserve
+          </button>
+          <button
+            class="btn btn-sm btn-secondary disabled"
+            *ngIf="!checkTime(time.hours, time.minutes)"
+          >
+            Passed
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-outline-primary"
+        (click)="close('Save click')"
+      >
+        Finish
+      </button>
+    </div>
+  </ng-template>
+  <div *ngIf="isLoading">
+    <fa-icon class="ms-3" [icon]="['fas', 'sync']" [spin]="true"></fa-icon>
+  </div>
+</button>
