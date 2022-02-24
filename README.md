@@ -22,4 +22,4 @@ ng serve -o
 email:admin@admin.com
 password:123456789
 ```
-> All data is stored in mongoDB Atlas database ❤
+> All data stored in mongoDB Atlas database ❤
