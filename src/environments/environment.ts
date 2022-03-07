@@ -5,11 +5,11 @@
 export const environment = {
   production: false,
   base_url: 'http://localhost:3000/',
-  login: 'veseeta/login',
-  logout: 'veseeta/logout',
-  signup: 'veseeta/signup',
-  doctors: 'veseeta/doctors',
-  users: 'veseeta/users',
+  login: 'login',
+  logout: 'logout',
+  signup: 'signup',
+  doctors: 'doctors',
+  users: 'users',
   url: 'https://jsonplaceholder.typicode.com/todos/1',
 };
 

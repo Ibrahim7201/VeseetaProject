@@ -48,51 +48,51 @@ export class ApiService {
     return this.http.get(url, { withCredentials: true });
   }
   public deleteUser(data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/users/${data}`;
+    const url: any = `${environment.base_url}users/${data}`;
     return this.http.delete(url, { withCredentials: true });
   }
   public deleteDoctor(data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/doctors/${data}`;
+    const url: any = `${environment.base_url}doctors/${data}`;
     return this.http.delete(url, { withCredentials: true });
   }
   public editDoctor(id: any, data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/doctors/${id}`;
+    const url: any = `${environment.base_url}doctors/${id}`;
     return this.http.patch(url, data, { withCredentials: true });
   }
   public addRating(id: any, rate: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/doctors/rate/${id}`;
+    const url: any = `${environment.base_url}doctors/rate/${id}`;
     return this.http.patch(url, rate, { withCredentials: true });
   }
   public getReservations(): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/users/reservations`;
+    const url: any = `${environment.base_url}users/reservations`;
     return this.http.get(url, { withCredentials: true });
   }
   public cancelReservation(data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/users/cancelreservations`;
+    const url: any = `${environment.base_url}users/cancelreservations`;
     return this.http.patch(url, data, { withCredentials: true });
   }
   public reservingDoctor(data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/doctors/reservations`;
+    const url: any = `${environment.base_url}doctors/reservations`;
     return this.http.post(url, data, { withCredentials: true });
   }
   public reserveUser(data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/users/reservations`;
+    const url: any = `${environment.base_url}users/reservations`;
     return this.http.post(url, data, { withCredentials: true });
   }
   public cancelReservationDoctor(data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/doctors/cancelreservations`;
+    const url: any = `${environment.base_url}doctors/cancelreservations`;
     return this.http.post(url, data, { withCredentials: true });
   }
   public uploadPhoto(data: any): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/img`;
+    const url: any = `${environment.base_url}img`;
     return this.http.post(url, data, { withCredentials: true });
   }
   public getUserData(): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/user`;
+    const url: any = `${environment.base_url}user`;
     return this.http.get(url, { withCredentials: true });
   }
   public getMyRole(): Observable<Object> {
-    const url: any = `${environment.base_url}veseeta/role`;
+    const url: any = `${environment.base_url}role`;
     return this.http.get(url, { withCredentials: true });
   }
 }
